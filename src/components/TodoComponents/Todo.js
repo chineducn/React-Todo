@@ -6,7 +6,6 @@ export default class Todo extends Component {
         return (            
             <div>
                 <span>{task}</span>
-                <input type="checkbox"/>
             </div>
         )
     }
