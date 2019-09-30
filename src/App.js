@@ -42,6 +42,10 @@ class App extends Component {
     this.setState({ todoTask: '' });
   }
 
+  handleCompletedTask = eventer => {
+    // debugger
+  }
+
   render() {
     
     return (
@@ -50,6 +54,7 @@ class App extends Component {
         <TodoList
           list={this.state.todoList}
           clearAll={this.deleteAllTasks}
+          identifyAsCompleted={this.handleCompletedTask}
         />
         <TodoForm
           noticeChange={this.handleChange}
