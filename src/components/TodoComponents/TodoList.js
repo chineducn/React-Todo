@@ -5,9 +5,10 @@ import Todo from './Todo';
 
 export default class TodoList extends Component {
     render() {
-        const { list } = this.props;
+        const { list, clearAll } = this.props;
         return (
             <>
+                <h3>Tasks</h3>
                 {
                     list.map(item =>
                         <Todo
@@ -16,6 +17,12 @@ export default class TodoList extends Component {
                         />
                     )
                 }
+                <button
+                    type='submit'
+                    onClick={clearAll}
+                >
+                    Clear All Tasks
+                </button>
             </>
         )
     }

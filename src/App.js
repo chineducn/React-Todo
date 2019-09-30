@@ -9,32 +9,53 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todoList: [
-        {
-          task: 'Organize Garage',
-          id: 1528817077286,
-          completed: false
-        },
-        {
-          task: 'Bake Cookies',
-          id: 1528817084358,
-          completed: false
-        }
-      ],
+      todoList: [],
       todoTask: '',
     }
   }
 
-  render() {
-    const { todoList } = this.state
+  deleteAllTasks = event => {
+    event.preventDefault();
+    this.setState({ todoList: [] })
+  }
 
+  handleChange = event => {
+    this.setState({ todoTask: event.target.value })
+  }
+
+  handleCreateTask = event => {
+    // debugger
+    event.preventDefault();
+    this.setState(
+      {
+        todoList:
+          [
+            ...this.state.todoList,
+            {
+              task: this.state.todoTask,
+              id: Date.now(),
+              completed: false,
+            }
+          ]
+      }
+    );
+    this.setState({ todoTask: '' });
+  }
+
+  render() {
+    
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList
-          list={todoList}
+          list={this.state.todoList}
+          clearAll={this.deleteAllTasks}
         />
-        <TodoForm />
+        <TodoForm
+          noticeChange={this.handleChange}
+          formValue={this.state.todoTask}
+          addTask={this.handleCreateTask}
+        />
       </div>
     );
   }

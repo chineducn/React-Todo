@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 
 export default class TodoForm extends Component {
     render() {
-        const { addtask } = this.props;
+        const { addTask, formValue, noticeChange } = this.props;
         return (
             <div>
                 <input
                     type="text"
                     placeholder='Enter task'
+                    value={formValue}
+                    onChange={noticeChange}
                 />
                 <button
                     type='submit'
-                    onClick={addtask}
+                    onClick={addTask}
                 >
                    Add Task 
                 </button>
